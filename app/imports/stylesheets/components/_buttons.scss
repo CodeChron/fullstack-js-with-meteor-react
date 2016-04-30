@@ -1,0 +1,12 @@
+.icon-btn{
+  background-color: transparent;
+  border:none;
+  
+  margin:0;
+  padding: 0;
+  text-align: center;
+
+  &:focus {
+   outline: 0;
+  }
+}
