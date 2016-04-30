@@ -1,11 +1,9 @@
 import React from 'react'
-import { AppHeaderLayout } from './app_header_layout'
-import NotesContainer from '../containers/notes_container'
 
-export const AppLayout = () =>
+export const AppLayout = ({header, content}) =>
   <div id="app-container">
-    <AppHeaderLayout />
+    {header()}
     <div id="main-content" className="container">
-      <NotesContainer />
+      {content()}
     </div>
   </div>

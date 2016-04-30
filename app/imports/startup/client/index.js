@@ -1,2 +1,1 @@
-import './main.html'
-import './main.js'
+import '../../routes.jsx'
