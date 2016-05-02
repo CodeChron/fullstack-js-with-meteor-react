@@ -8,23 +8,21 @@ export default createContainer(() => {
 	const notes = Notes.find({}, { sort: { updatedAt: -1 }}).fetch()
 
 	const handleCreate = (content) => {
-
     Meteor.call('/note/create', content, (err, result) => {
-    if (!err) {
-      console.log('note: ' + result._id)
-    } else {
-      // note.catchValidationException(err)
-      console.log('there was an error: ' + err.reason)
-    }
-  })
-		// Notes.insert({ 
-		// 	content:content,
-		// 	updatedAt: new Date() 
-		// })
+      if (!err) {
+        console.log('note: ' + result._id)
+      } else {
+        console.log('there was an error: ' + err.reason)
+      }
+    })
 	}
 
 	const handleDelete = (note) => {
-		Notes.remove({_id: note._id})
+		Meteor.call('/note/delete', note._id, (err, result) => {
+      if (err) {
+        console.log('there was an error: ' + err.reason)
+      }
+    })
 	}
 
   return {

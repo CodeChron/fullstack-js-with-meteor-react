@@ -4,7 +4,7 @@ import { Class } from 'meteor/jagi:astronomy'
 
 export const Notes = new Mongo.Collection('notes')
 
-export const NoteSchema = Class.create({
+const NoteSchema = Class.create({
 	name: 'Note',
 	collection: Notes,
 	fields: {
@@ -19,35 +19,13 @@ Meteor.methods({
 		const note = new NoteSchema()
     note.set({
       content: content,
-   // ownerId: Meteor.userId(),
       updatedAt: new Date()
     })
 
     note.save()
     return note
-
-    // if (note.validate()) {
-    //   //get note count and update noteCount in session
-      
-    //   note.save()
-    //   return note
-    // }
-    // note.throwValidationException()
   },
 
-  // '/note/save': (note) => {
-		
-  //   note.set({
-		// 	updatedAt: new Date()
-		// })
-
-  //   if (note.validate()) {
-  //     note.save()
-  //     return
-  //   }
-  //   note.throwValidationException()
-  // },
-
-  // '/note/delete': (id) => Notes.remove({_id: id})
+  '/note/delete': (id) => Notes.remove({_id: id})
 
 })
