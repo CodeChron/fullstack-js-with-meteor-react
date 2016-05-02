@@ -7,8 +7,8 @@ export default createContainer(() => {
 
 	const notes = Notes.find({}, { sort: { updatedAt: -1 }}).fetch()
 
-	const handleCreate = (content) => {
-    Meteor.call('/note/create', content, (err, result) => {
+	const handleCreate = (title) => {
+    Meteor.call('/note/create', title, (err, result) => {
       if (!err) {
         console.log('note: ' + result._id)
       } else {

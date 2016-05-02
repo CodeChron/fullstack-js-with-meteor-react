@@ -8,17 +8,21 @@ const NoteSchema = Class.create({
 	name: 'Note',
 	collection: Notes,
 	fields: {
-    content: String,
+		title: String,
+		content: {
+      type: String,
+      default: () => ""
+    },
     updatedAt: Date 
   }
 })
 
 Meteor.methods({
 
-	'/note/create': (content) => {
+	'/note/create': (title) => {
 		const note = new NoteSchema()
     note.set({
-      content: content,
+      title,
       updatedAt: new Date()
     })
 

@@ -23,7 +23,7 @@ export const List = (props) =>{
 	    {displayFeature(props.addItem, listFeatures.addItem)}
 	    { 
 	    	props.collection.map((item) => {
-	 	      return <li key={item._id} className="list-group-item">{item.content} {displayFeature(props.deleteItem, listFeatures.deleteItem, item)}
+	 	      return <li key={item._id} className="list-group-item">{item.title} {displayFeature(props.deleteItem, listFeatures.deleteItem, item)}
 	 	      </li>
 	      })
 	    }
