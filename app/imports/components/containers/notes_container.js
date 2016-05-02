@@ -5,7 +5,9 @@ import { Meteor } from 'meteor/meteor'
 
 export default createContainer(() => {
 
-	const notes = Notes.find({}, { sort: { updatedAt: -1 }}).fetch()
+	const sub = Meteor.subscribe('notes.all')
+
+	const notes = sub.ready()? Notes.find({}, { sort: { updatedAt: -1 }}).fetch() : []
 
 	const handleCreate = (title) => {
     Meteor.call('/note/create', title, (err, result) => {
@@ -28,6 +30,7 @@ export default createContainer(() => {
   return {
   	handleSubmit: handleCreate,
 	  placeholder: "New Note",
+	  subsReady: sub.ready(),
 	  collection: notes,
 	  handleDelete: handleDelete,
 	  addItem: true,

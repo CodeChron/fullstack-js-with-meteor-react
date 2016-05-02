@@ -19,7 +19,8 @@ export const List = (props) =>{
   	deleteItem: (args) => <span className="pull-right"><IconBtn title={"Delete"} icon={"glyphicon glyphicon-remove"}  handleClick={()=> handleDelete(args)} /></span>
 	}
 	
-	return <ul className="list-group">
+	return props.subsReady?
+	  <ul className="list-group">
 	    {displayFeature(props.addItem, listFeatures.addItem)}
 	    { 
 	    	props.collection.map((item) => {
@@ -27,11 +28,14 @@ export const List = (props) =>{
 	 	      </li>
 	      })
 	    }
-  </ul>
+    </ul>
+    :
+    null
 }
 
 List.propTypes = {
 	collection: React.PropTypes.array.isRequired,
+	subsReady: React.PropTypes.bool.isRequired,
 	addItem: React.PropTypes.bool,
 	deleteItem:  React.PropTypes.bool,
 }
