@@ -1,6 +1,7 @@
 import React from 'react'
 import { IconBtn } from '../buttons/icon_btn'
 import { SingleFieldSubmit } from '../forms/single_field_submit'
+import { Loader } from '../loader/loader.jsx'
 
 export const List = (props) =>{
 
@@ -19,7 +20,7 @@ export const List = (props) =>{
   	deleteItem: (args) => <span className="pull-right"><IconBtn title={"Delete"} icon={"glyphicon glyphicon-remove"}  handleClick={()=> handleDelete(args)} /></span>
 	}
 	
-	return props.subsReady?
+	return  props.subsReady?
 	  <ul className="list-group">
 	    {displayFeature(props.addItem, listFeatures.addItem)}
 	    { 
@@ -30,7 +31,7 @@ export const List = (props) =>{
 	    }
     </ul>
     :
-    null
+    <Loader />
 }
 
 List.propTypes = {
