@@ -15,3 +15,14 @@ FlowRouter.route('/', {
     })
   }
 })
+
+FlowRouter.route('/notes/:_id', {
+  name: 'noteDetail',
+  action(params) {
+    mount(AppLayout, {
+      header: () => <AppHeaderLayout />,
+      content: () => null
+    })
+  }
+})
+
