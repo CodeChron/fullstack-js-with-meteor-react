@@ -12,7 +12,7 @@ export default createContainer(() => {
 	const handleCreate = (title) => {
     Meteor.call('/note/create', title, (err, result) => {
       if (!err) {
-        console.log('note: ' + result._id)
+        // console.log('note: ' + result._id)
       } else {
         console.log('there was an error: ' + err.reason)
       }
