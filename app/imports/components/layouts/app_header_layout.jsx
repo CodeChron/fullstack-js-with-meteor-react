@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const AppHeaderLayout = (props) =>
-<nav className="navbar navbar-default">
+<nav className="navbar navbar-default three-col-layout">
   <div className="container">
     <div className="navbar-header">
       <h1 className="navbar-brand">{props.pageTitle}</h1>
