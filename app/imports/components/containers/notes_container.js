@@ -34,7 +34,8 @@ export default createContainer(() => {
 	  collection: notes,
 	  handleDelete: handleDelete,
 	  addItem: true,
-	  deleteItem: true
+	  deleteItem: true,
+    linkItem: true
   }
 
 }, List)
