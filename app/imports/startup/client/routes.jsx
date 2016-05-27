@@ -22,7 +22,7 @@ FlowRouter.route('/notes/:_id', {
   name: 'noteDetail',
   action(params) {
     mount(NotesContainer, {
-      content: () => null
+      content: () => <NoteDetail />
     })
   }
 })
