@@ -1,22 +1,50 @@
 import { createContainer } from 'meteor/react-meteor-data'
 import { Notes } from '../../api/notes/notes'
-import { List } from '../lists/list'
+import { AppLayout } from '../layouts/app_layout'
 
-export default createContainer(() => {
+export default createContainer(
+	() => {
+		
+		const
+			notes = Notes.find({}, { sort: { updatedAt: -1 }}).fetch()
+			,
+		  handleCreateNote = (title) => {
+			  Notes.insert({ 
+				  title,
+				  updatedAt: new Date() 
+			  })
+		  }
 
-	const notes = Notes.find({}, { sort: { updatedAt: -1 }}).fetch()
+	  return {
+	  	handleSubmit: handleCreateNote,
+		  placeholder: "New Note",
+		  notes
+	  }
 
-	const handleCreateNote = (content) => {
-		Notes.insert({ 
-			content:content,
-			updatedAt: new Date() 
-		})
-	}
+  },
+  AppLayout
+)
 
-  return {
-  	handleSubmit: handleCreateNote,
-	  placeholder: "New Note",
-	  collection: notes
-  }
+// HEAD
+// import { List } from '../lists/list'
 
-}, List)
+// export default createContainer(() => {
+
+// 	const notes = Notes.find({}, { sort: { updatedAt: -1 }}).fetch()
+
+// 	const handleCreateNote = (content) => {
+// 		Notes.insert({ 
+// 			content:content,
+// 			updatedAt: new Date() 
+// 		})
+// 	}
+
+//   return {
+//   	handleSubmit: handleCreateNote,
+// 	  placeholder: "New Note",
+// 	  collection: notes
+//   }
+
+// }, List)
+// =======
+// 04-NEW-create-note
