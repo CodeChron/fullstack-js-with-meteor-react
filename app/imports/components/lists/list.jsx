@@ -47,3 +47,6 @@ List.defaultProps = {
 	addItem: false,
 	deleteItem: false
 }
+
+
+	 	      // return <li key={item._id} className="list-group-item">{item.title} <span className="pull-right"><IconBtn title={"Delete"} icon={"glyphicon glyphicon-remove"}  handleClick={()=> handleDelete(item)} /></span></li>

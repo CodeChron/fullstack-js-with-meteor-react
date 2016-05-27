@@ -1,11 +1,11 @@
 import React from 'react'
 import { AppHeaderLayout } from './app_header_layout'
-import NotesContainer from '../containers/notes_container'
+import { List } from '../lists/list'
 
-export const AppLayout = () =>
+export const AppLayout = (props) =>
   <div id="app-container">
     <AppHeaderLayout />
     <div id="main-content" className="container">
-      <NotesContainer />
+     <List collection={props.notes} {...props} />
     </div>
   </div>
