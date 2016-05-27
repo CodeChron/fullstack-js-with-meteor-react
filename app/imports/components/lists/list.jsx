@@ -16,7 +16,7 @@ export const List = (props) =>{
 	    <li className="list-group-item"><SingleFieldSubmit {...props} /></li>
 	    { 
 	    	props.collection.map((item) => {
-	 	      return <li key={item._id} className="list-group-item">{item.content} <span className="pull-right"><IconBtn title={"Delete"} icon={"glyphicon glyphicon-remove"}  handleClick={()=> handleDelete(item)} /></span></li>
+	 	      return <li key={item._id} className="list-group-item">{item.title} <span className="pull-right"><IconBtn title={"Delete"} icon={"glyphicon glyphicon-remove"}  handleClick={()=> handleDelete(item)} /></span></li>
 	      })
 	    }
   </ul>
