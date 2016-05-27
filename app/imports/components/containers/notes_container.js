@@ -5,9 +5,9 @@ import { AppLayout } from '../layouts/app_layout'
 export default createContainer(
 	() => {
 		
-		const handleCreateNote = (content) => {
+		const handleCreateNote = (title) => {
 			Notes.insert({ 
-				content:content,
+				title,
 				updatedAt: new Date() 
 			})
 		}
