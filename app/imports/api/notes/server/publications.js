@@ -7,6 +7,6 @@ const
     updatedAt: 1
   }
 
-Meteor.publish('notes.all', function() {
+Meteor.publish('notes.list.all', function() {
   return Notes.find({}, { fields: notesListFields})
 })
