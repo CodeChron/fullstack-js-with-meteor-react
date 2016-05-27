@@ -20,7 +20,7 @@ FlowRouter.route('/notes/:_id', {
   name: 'noteDetail',
   action(params) {
     mount(AppLayout, {
-      header: () => <AppHeaderLayout />,
+      header: (props) => <AppHeaderLayout id={params._id} {...props} />,
       content: () => null
     })
   }
