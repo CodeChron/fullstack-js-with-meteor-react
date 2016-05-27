@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AppLayout } from '/imports/components/layouts/app_layout'
+import NotesContainer from '/imports/components/containers/notes_container'
 
 import './main.html'
 
 Meteor.startup(() =>
-	ReactDOM.render(<AppLayout />, document.getElementById("app"))
+	ReactDOM.render(<NotesContainer />, document.getElementById("app"))
 )
