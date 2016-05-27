@@ -12,7 +12,6 @@ export const List = (props) =>{
  	  }
 	}
 
-	const displayFeature = (shouldDisplay, feature, args ) => shouldDisplay? feature(args) : null
 
  const listFeatures = {
   	addItem: () => <li className="list-group-item"><SingleFieldSubmit {...props} /></li>,
@@ -20,10 +19,19 @@ export const List = (props) =>{
 	}
 	
 	return <ul className="list-group">
-	    {displayFeature(props.addItem, listFeatures.addItem)}
+	    {props.addItem?
+         listFeatures.addItem()
+       :
+        null
+      }
 	    { 
 	    	props.collection.map((item) => {
-	 	      return <li key={item._id} className="list-group-item">{item.content} {displayFeature(props.deleteItem, listFeatures.deleteItem, item)}
+	 	      return <li key={item._id} className="list-group-item">{item.title} 
+	 	      {props.deleteItem?
+	 	      	listFeatures.deleteItem(item)
+	 	       :
+	 	        null
+	 	      }
 	 	      </li>
 	      })
 	    }
