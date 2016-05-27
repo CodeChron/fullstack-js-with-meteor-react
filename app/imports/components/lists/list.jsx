@@ -13,8 +13,6 @@ export const List = (props) =>{
  	  }
 	}
 
-	const displayFeature = (shouldDisplay, feature, args ) => shouldDisplay? feature(args) : null
-
  const listFeatures = {
   	addItem: () => <li className="list-group-item"><SingleFieldSubmit {...props} /></li>,
   	deleteItem: (args) => <span className="pull-right"><IconBtn title={"Delete"} icon={"glyphicon glyphicon-remove"}  handleClick={()=> handleDelete(args)} /></span>
@@ -22,13 +20,22 @@ export const List = (props) =>{
 	
 	return  props.subsReady?
 	  <ul className="list-group">
-	    {displayFeature(props.addItem, listFeatures.addItem)}
-	    { 
-	    	props.collection.map((item) => {
-	 	      return <li key={item._id} className="list-group-item">{item.title} {displayFeature(props.deleteItem, listFeatures.deleteItem, item)}
-	 	      </li>
-	      })
-	    }
+	    {props.addItem?
+         listFeatures.addItem()
+       :
+        null
+      }
+	    {props.collection.map(
+	    	(item) => 
+	    	  <li key={item._id} className="list-group-item">
+ 	          {item.title} 
+ 	          {props.deleteItem?
+ 	      	    listFeatures.deleteItem(item)
+ 	           :
+ 	             null
+ 	          }
+ 	        </li>
+ 	    )}
     </ul>
     :
     <Loader />
