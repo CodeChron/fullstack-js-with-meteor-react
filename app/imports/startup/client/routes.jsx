@@ -7,6 +7,7 @@ import NotesContainer from '../../components/containers/notes_container'
 
 //PAGES
 import { Homepage } from '../../components/pages/homepage'
+import { NoteDetail } from '../../components/pages/note_detail'
 
 FlowRouter.route('/', {
   name: 'homepage',
@@ -20,8 +21,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/notes/:_id', {
   name: 'noteDetail',
   action(params) {
-    mount(AppLayout, {
-      header: () => <AppHeaderLayout />,
+    mount(NotesContainer, {
       content: () => null
     })
   }
