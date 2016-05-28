@@ -7,9 +7,20 @@ export const NoteDetailsPage = (props) => {
 
 	const
     handleBackBtnClick = () => history.back(),
-    backBtn = <IconBtn icon="glyphicon glyphicon-menu-left" btnSize="btn-lg" handleClick={handleBackBtnClick} />,
+    backBtn = <IconBtn
+                icon="glyphicon glyphicon-menu-left"
+                btnSize="btn-lg"
+                handleClick={handleBackBtnClick}
+              />
+    ,
     pageTitleBlock = <h1 className="navbar-brand full-width">{props.note.title}</h1>
-    editablePageTitle = <EditableText viewBlock={pageTitleBlock} editableText={props.note.title} field={"title"} handleUpdate={props.handleUpdates} />
+    ,
+    editablePageTitle = <EditableText
+                          viewBlock={pageTitleBlock}
+                          editableText={props.note.title}
+                          field={"title"}
+                          {...props}
+                        />
     
 
 	return <div id="app-container">

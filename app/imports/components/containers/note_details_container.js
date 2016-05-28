@@ -12,7 +12,20 @@ export default createContainer(
 		  noteId = FlowRouter.getParam('_id'),
 		  sub = Meteor.subscribe('note.details', noteId),
 			note = sub.ready()? Notes.findOne({_id: noteId }) : {},
-			handleUpdates = (field) => null
+			handleUpdates = (field, value) =>  {
+		    // IN PROGRESS
+		    // const noteFields = {}
+
+		    // noteFields[field] = value
+		    // note.set(noteFields)
+
+		    // Meteor.call('/note/save', note, (err, result) => {
+		    //   if (err) {
+		    //     note.catchValidationException(err)
+		    //     console.log('there was an error: ' + err.reason)
+		    //   } 
+		    // })				
+			}
 
 	  return {
 		  note,
@@ -22,3 +35,19 @@ export default createContainer(
   },
   AppLayout
 )
+
+  // handleUpdates(field, value){
+    // const 
+    //   note = this.data.note,
+    //   noteFields = {}
+
+    // noteFields[field] = value
+    // note.set(noteFields)
+
+    // Meteor.call('/note/save', note, (err, result) => {
+    //   if (err) {
+    //     note.catchValidationException(err)
+    //     console.log('there was an error: ' + err.reason)
+    //   } 
+    // })
+  // }

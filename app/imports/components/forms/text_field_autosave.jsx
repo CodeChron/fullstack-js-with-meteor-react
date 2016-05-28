@@ -1,13 +1,13 @@
 import React from 'react'
 import autoBind from 'react-autobind'
-// import {TextBtn} from './buttons/TextBtn.jsx'
+import _ from 'lodash'
 
-export default class TextFieldAutoSave extends React.Component {
+export class TextFieldAutoSave extends React.Component {
 
 	constructor(props) {
     super(props);
     this.state = {
-      inputValue: this.props.inputValue
+      textValue: this.props.textValue
     }
     autoBind(this)
   }
@@ -16,7 +16,7 @@ export default class TextFieldAutoSave extends React.Component {
     const updatedValue = e.target.value
     const saveInterval = 300
 
-    this.setState({inputValue: updatedValue})
+    this.setState({textValue: updatedValue})
 
     this.autoSave = this.autoSave || _.throttle(content => {
       this.props.handleUpdates(this.props.field, content)
@@ -34,40 +34,41 @@ export default class TextFieldAutoSave extends React.Component {
     this.props.doneEditing()
   }
 
-  handleOnKeyPress(e) {
-    if (AppLib.forms.shiftReturn(e)) {
-      e.preventDefault()
-      this.doneEditing(e)
-      return false
-    }
-  }
-
 	render() {
-
-    return <form className="single-field-submit" onSubmit={this.doneEditing}>
-                           <input
-                              type="text"
-                              placeholder={this.props.placeholder}
-                              value={this.state.inputValue}
-                              onChange={this.saveChanges}
-                              autoFocus={this.props.autoFocus}
-                              onBlur={this.handleOnBlur}
-                            />
-                           <input type="submit" style={{display:'none'}} />
-                        </form>
+      return <form className="single-field-submit" onSubmit={this.doneEditing}>
+               <input
+                  type="text"
+                  placeholder={this.props.placeholder}
+                  value={this.state.textValue}
+                  onChange={this.saveChanges}
+                  autoFocus={"true"}
+                  onBlur={this.handleOnBlur}
+                />
+               <input type="submit" style={{display:'none'}} />
+            </form>
 	}
 }
 
 TextFieldAutoSave.propTypes = { 
-  inputValue: React.PropTypes.string
+  textValue: React.PropTypes.string.isRequired
 }
 
 TextFieldAutoSave.defaultProps = { 
-  inputValue:"",
-  placeholder: "Write something...",
-  autoFocus: false
+  placeholder: "Write something..."
 }
 
+
+    // return <form className="single-field-submit" onSubmit={this.doneEditing}>
+    //                        <input
+    //                           type="text"
+    //                           placeholder={this.props.placeholder}
+    //                           value={this.state.inputValue}
+    //                           onChange={this.saveChanges}
+    //                           autoFocus={this.props.autoFocus}
+    //                           onBlur={this.handleOnBlur}
+    //                         />
+    //                        <input type="submit" style={{display:'none'}} />
+    //                     </form>
 
 
     // let multiLineForm = <form className="main-content-editing">

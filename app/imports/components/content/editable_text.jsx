@@ -22,20 +22,19 @@ export class EditableText extends React.Component {
   //   this.setState({inputValue: ""})
   // }
 
-  setEditMode(){
-    this.setState({ editing: true })
+  toggleEditMode(){
+    this.setState({ editing: !this.state.editing })
   }
 
   render() {
       return this.state.editing?
-        <TextFieldAutoSave
-          autoFocus={true}
-          inputValue={this.props.editableText}
-          handleUpdates={this.props.handleUpdates}
-          field={this.props.field}
+        <TextFieldAutoSave 
+          textValue={this.props.note.title}
+          doneEditing={this.toggleEditMode}
+          {...this.props}
         />
       :
-        <span className="clickable" onClick={this.setEditMode}>{this.props.viewBlock}</span>
+        <span className="clickable" onClick={this.toggleEditMode}>{this.props.viewBlock}</span>
         
   }
 }
@@ -48,3 +47,15 @@ EditableText.propTypes = {
 EditableText.defaultProps = {
   editing: false
 }
+
+// <TextFieldAutoSave
+//           autoFocus={true}
+//           {...this.props}
+//         />
+
+        // <TextFieldAutoSave
+        //   autoFocus={true}
+        //   inputValue={this.props.editableText}
+        //   handleUpdates={this.props.handleUpdates}
+        //   field={this.props.field}
+        // />
