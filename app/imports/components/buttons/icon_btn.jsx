@@ -3,7 +3,7 @@ import classNames from 'classNames'
 
 export const IconBtn = (props) => {
 
-  const btnClasses = classNames("btn btn-default icon-btn", props.btnSize)
+  const btnClasses = classNames("btn icon-btn", props.btnSize)
 
   return <button
       onClick={props.handleClick}
@@ -24,5 +24,5 @@ IconBtn.propTypes = {
 }
 
 IconBtn.defaultProps = {
-  btnSize: "btn-lg"
+  btnSize: "btn-default"
 }
