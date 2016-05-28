@@ -19,7 +19,8 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 react-meteor-data
 msavin:mongol
 twbs:bootstrap
-kadira:flow-router
 jagi:astronomy
 fourseven:scss
 seba:minifiers-autoprefixer
+kadira:flow-router
+
