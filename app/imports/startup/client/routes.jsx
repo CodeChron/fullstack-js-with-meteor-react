@@ -8,7 +8,7 @@ import NoteDetailsContainer from '../../components/containers/note_details_conta
 
 //PAGES
 import { Homepage } from '../../components/pages/homepage'
-import { NoteDetails } from '../../components/pages/note_details'
+import { NoteDetailsPage } from '../../components/pages/note_details_page'
 
 FlowRouter.route('/', {
   name: 'homepage',
@@ -23,7 +23,7 @@ FlowRouter.route('/notes/:_id', {
   name: 'noteDetail',
   action(params) {
     mount(NoteDetailsContainer, {
-      content: (props) => <NoteDetails id={params._id} {...props} />
+      content: (props) => <NoteDetailsPage id={params._id} {...props} />
     })
   }
 })

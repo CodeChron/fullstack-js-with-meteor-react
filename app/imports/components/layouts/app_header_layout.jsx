@@ -1,19 +1,23 @@
 import React from 'react'
 
-export const AppHeaderLayout = (props) =>
-<nav className="navbar navbar-default three-col-layout">
-  <div className="left-right-icons">
-    {props.headerLeft}
-  </div>
-  <div className="container main-content centered">
-    <div className="navbar-header">
-      <h1 className="navbar-brand full-width">{props.pageTitle}</h1>
-    </div>
- </div>
-   <div className="left-right-icons">
-    {props.headerRight}
-  </div>
-</nav>
+export const AppHeaderLayout = (props) => {
+	const dfltPageTitle = <h1 className="navbar-brand full-width">{"My Notes App"}</h1>
+
+	return <nav className="navbar navbar-default three-col-layout">
+	  <div className="left-right-icons">
+	    {props.headerLeft}
+	  </div>
+	  <div className="container main-content centered">
+	    <div className="navbar-header full-width">
+	      {props.headerCenter}
+	    </div>
+	 </div>
+	   <div className="left-right-icons">
+	    {props.headerRight}
+	  </div>
+	</nav>
+
+}
 
 
 AppHeaderLayout.propTypes = {
@@ -21,7 +25,7 @@ AppHeaderLayout.propTypes = {
 }
 
 AppHeaderLayout.defaultProps = { 
-  pageTitle: "My Notes App",
   headerLeft: null,
+  headerCenter: this.dfltPageTitle,
   headerRight: null
 }
