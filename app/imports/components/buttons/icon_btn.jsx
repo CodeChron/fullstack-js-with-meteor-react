@@ -3,7 +3,7 @@ import React from 'react'
 export const IconBtn = (props) =>
   <button
     onClick={props.handleClick}
-    className="btn btn-default btn-xs"
+    className="btn btn-default btn-lg icon-btn"
     title={props.title}
      alt={props.title}
   >
