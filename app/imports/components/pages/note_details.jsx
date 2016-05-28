@@ -1,12 +1,10 @@
 import React from 'react'
 import { AppHeaderLayout } from '../layouts/app_header_layout'
-import { List } from '../lists/list'
 
-export const Homepage = (props) => 
-
+export const NoteDetails = (props) => 
 <div id="app-container">
-  <AppHeaderLayout />
+  <AppHeaderLayout pageTitle={props.note.title} />
   <div id="main-content" className="container">
-    <List collection={props.notes} {...props} />
+    Note details
   </div>
 </div>

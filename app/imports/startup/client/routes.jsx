@@ -4,10 +4,11 @@ import { mount } from 'react-mounter'
 
 // LAYOUTS
 import NotesContainer from '../../components/containers/notes_container'
+import NoteDetailsContainer from '../../components/containers/note_details_container'
 
 //PAGES
 import { Homepage } from '../../components/pages/homepage'
-import { NoteDetail } from '../../components/pages/note_detail'
+import { NoteDetails } from '../../components/pages/note_details'
 
 FlowRouter.route('/', {
   name: 'homepage',
@@ -21,8 +22,8 @@ FlowRouter.route('/', {
 FlowRouter.route('/notes/:_id', {
   name: 'noteDetail',
   action(params) {
-    mount(NotesContainer, {
-      content: (props) => <NoteDetail id={params._id} {...props} />
+    mount(NoteDetailsContainer, {
+      content: (props) => <NoteDetails id={params._id} {...props} />
     })
   }
 })
