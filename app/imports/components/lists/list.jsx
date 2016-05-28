@@ -1,6 +1,7 @@
 import React from 'react'
 import { IconBtn } from '../buttons/icon_btn'
 import { SingleFieldSubmit } from '../forms/single_field_submit'
+import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Loader } from '../loader/loader.jsx'
 
 export const List = (props) =>{
@@ -60,3 +61,21 @@ List.defaultProps = {
 	deleteItem: false,
 	linkItem: false
 }
+
+// =======
+//          listFeatures.addItem()
+//        :
+//         null
+//       }
+// 	    {props.collection.map(
+// 	    	(item) => 
+// 	    	  <li key={item._id} className="list-group-item">
+//  	          {item.title} 
+//  	          {props.deleteItem?
+//  	      	    listFeatures.deleteItem(item)
+//  	           :
+//  	             null
+//  	          }
+//  	        </li>
+//  	    )}
+// >>>>>>> 13-note-detail-route
