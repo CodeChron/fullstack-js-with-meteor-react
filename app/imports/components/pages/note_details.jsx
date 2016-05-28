@@ -5,7 +5,9 @@ import { IconBtn } from '../buttons/icon_btn'
 export const NoteDetails = (props) => {
 
 	const
-    backBtn = <IconBtn icon="glyphicon glyphicon-menu-left" handleClick={props.handleBackBtnClick} />
+    handleBackBtnClick = () => history.back(),
+    backBtn = <IconBtn icon="glyphicon glyphicon-menu-left" handleClick={handleBackBtnClick} />
+    
 
 	return <div id="app-container">
 	  <AppHeaderLayout

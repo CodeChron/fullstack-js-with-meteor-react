@@ -11,13 +11,11 @@ export default createContainer(
 		const
 		  noteId = FlowRouter.getParam('_id'),
 		  sub = Meteor.subscribe('note.details', noteId),
-			note = sub.ready()? Notes.findOne({_id: noteId }) : {},
-			handleBackBtnClick = () => history.back()
+			note = sub.ready()? Notes.findOne({_id: noteId }) : {}
 
 	  return {
 		  note,
-		  subsReady: sub.ready(),
-		  handleBackBtnClick
+		  subsReady: sub.ready()
 	  }
   },
   AppLayout
