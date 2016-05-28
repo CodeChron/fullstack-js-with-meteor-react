@@ -16,7 +16,7 @@ export const List = (props) =>{
 
  const listFeatures = {
   	addItem: () => <li className="list-group-item"><SingleFieldSubmit {...props} /></li>,
-  	deleteItem: (args) => <span className="pull-right"><IconBtn title={"Delete"} icon={"glyphicon glyphicon-remove"}  handleClick={()=> handleDelete(args)} /></span>,
+  	deleteItem: (args) => <span className="pull-right"><IconBtn title={"Delete"} icon={"glyphicon glyphicon-remove"} btnSize={"btn-xs"} handleClick={()=> handleDelete(args)} /></span>,
   	linkItem: (item) => <a href={FlowRouter.path( "noteDetail" , {_id: item._id})}>{item.title}</a>  	
 	}
 	
