@@ -1,6 +1,6 @@
 import React from 'react'
 import autoBind from 'react-autobind'
-import { TextFieldAutoSave } from '../forms/text_field_autosave'
+import { AutoSaveInput } from '../forms/autosave_input'
 
 export class EditableText extends React.Component {
 
@@ -28,7 +28,8 @@ export class EditableText extends React.Component {
 
   render() {
       return this.state.editing?
-        <TextFieldAutoSave 
+        <AutoSaveInput
+          multiline={this.props.multiline}
           textValue={this.props.note.title}
           doneEditing={this.toggleEditMode}
           {...this.props}

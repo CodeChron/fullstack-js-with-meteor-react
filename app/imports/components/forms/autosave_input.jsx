@@ -1,8 +1,12 @@
 import React from 'react'
 import autoBind from 'react-autobind'
 import _ from 'lodash'
+// import { MultiLineContentEditor } from './multi_line_content_editor'
+// import { SingleFieldContentEditor } from './single_field_content_editor'
+import { TextBtn } from '../buttons/text_btn'
 
-export class TextFieldAutoSave extends React.Component {
+
+export class AutoSaveInput extends React.Component {
 
 	constructor(props) {
     super(props);
@@ -35,25 +39,48 @@ export class TextFieldAutoSave extends React.Component {
   }
 
 	render() {
-      return <form className="single-field-submit" onSubmit={this.doneEditing}>
-               <input
-                  type="text"
-                  placeholder={this.props.placeholder}
-                  value={this.state.textValue}
-                  onChange={this.saveChanges}
-                  autoFocus={"true"}
-                  onBlur={this.handleOnBlur}
-                />
-               <input type="submit" style={{display:'none'}} />
-            </form>
+
+    let singleLineForm = <form onSubmit={this.doneEditing}>
+             <input
+                type="text"
+                placeholder={this.props.placeholder}
+                value={this.state.textValue}
+                onChange={this.saveChanges}
+                autoFocus={"true"}
+                onBlur={this.handleOnBlur}
+              />
+             <input type="submit" style={{display:'none'}} />
+          </form>
+
+    let multiLineForm = <form className="main-content-editing">
+                      <textarea
+                        className="flex-main-content"
+                        placeholder={this.props.placeholder}
+                        value={this.state.inputValue}
+                        onChange={this.saveChanges}
+                        autoFocus={this.props.autoFocus}
+                        onBlur={this.props.doneEditing}
+                        onKeyPress={this.handleOnKeyPress}
+                      />
+                      <div className="form-controls flex-column-centered">
+                        <TextBtn
+                          title="Done" 
+                        />
+                        <div className="help-text block-padding">(Or use Shift + Return)</div>
+                        </div>
+                    </form>
+
+    return this.props.multiline? multiLineForm : singleLineForm
 	}
 }
 
-TextFieldAutoSave.propTypes = { 
-  textValue: React.PropTypes.string.isRequired
+AutoSaveInput.propTypes = { 
+  textValue: React.PropTypes.string.isRequired,
+  multiline: React.PropTypes.bool
 }
 
-TextFieldAutoSave.defaultProps = { 
+AutoSaveInput.defaultProps = {
+  multiline: false, 
   placeholder: "Write something..."
 }
 

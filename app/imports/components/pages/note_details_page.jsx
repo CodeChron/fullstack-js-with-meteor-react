@@ -15,6 +15,8 @@ export const NoteDetailsPage = (props) => {
     ,
     pageTitleBlock = <h1 className="navbar-brand full-width">{props.note.title}</h1>
     ,
+    noteContentBlock = <p>FOO</p>
+    ,
     editablePageTitle = <EditableText
                           viewBlock={pageTitleBlock}
                           editableText={props.note.title}
@@ -29,7 +31,13 @@ export const NoteDetailsPage = (props) => {
 	  headerCenter={editablePageTitle}
 	  />
 	  <div id="main-content" className="container">
-	    Note details
+	    <EditableText
+                          viewBlock={noteContentBlock}
+                          editableText={""}
+                          field={"content"}
+                          multiline={true}
+                          {...props}
+                        />
 	  </div>
 	</div>
 }
