@@ -19,7 +19,7 @@ export class TextFieldAutoSave extends React.Component {
     this.setState({textValue: updatedValue})
 
     this.autoSave = this.autoSave || _.throttle(content => {
-      this.props.handleUpdates(this.props.field, content)
+      this.props.handleUpdates(this.props.note, this.props.field, content)
     }, saveInterval)
 
     this.autoSave(updatedValue)

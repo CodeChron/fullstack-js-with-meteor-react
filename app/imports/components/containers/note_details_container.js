@@ -12,16 +12,20 @@ export default createContainer(
 		  noteId = FlowRouter.getParam('_id'),
 		  sub = Meteor.subscribe('note.details', noteId),
 			note = sub.ready()? Notes.findOne({_id: noteId }) : {},
-			handleUpdates = (field, value) =>  {
-		    // IN PROGRESS
-		    // const noteFields = {}
 
-		    // noteFields[field] = value
-		    // note.set(noteFields)
+			//pass all values needed in as args to ensure purity - ie the same input will always yield the same output
+			handleUpdates = (collection, field, value) =>  {
 
-		    // Meteor.call('/note/save', note, (err, result) => {
+				console.log("collection: ", collection)
+		
+		    // const doc = {}
+		    // doc[field] = value
+
+		    // collection.set(doc)
+
+		    // Meteor.call('/note/save', collection, (err, result) => {
 		    //   if (err) {
-		    //     note.catchValidationException(err)
+		    //     collection.catchValidationException(err)
 		    //     console.log('there was an error: ' + err.reason)
 		    //   } 
 		    // })				
