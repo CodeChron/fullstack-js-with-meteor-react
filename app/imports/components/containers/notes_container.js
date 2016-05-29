@@ -2,8 +2,8 @@ import { createContainer } from 'meteor/react-meteor-data'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Note } from '../../api/notes/notes'
 import { Meteor } from 'meteor/meteor'
-
 import { AppLayout } from '../layouts/app_layout'
+import { AppLib } from '../../lib/app_lib'
 
 export default createContainer(
 	() => {
@@ -14,13 +14,11 @@ export default createContainer(
 			,
 			redirectToNoteDetail = note => FlowRouter.go("noteDetail", {_id: note._id})
 			,
-			handleDbResult = (err, result) => err? console.log('db error: ' + err.reason) : result
-			,
 		  handleCreateNote = (title) => {
 		    Meteor.call(
 		    	'/note/create',
 		    	title,
-		    	(err, result) => handleDbResult(err, redirectToNoteDetail(result))
+		    	(err, result) => AppLib.db.handleDbResult(err, redirectToNoteDetail(result))
 		    )
 		  }
 		  ,
