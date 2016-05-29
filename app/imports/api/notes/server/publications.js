@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor'
-import { Notes } from '../notes'
+import { Note } from '../notes'
 
 const
   notesListFields = {
@@ -11,9 +11,9 @@ const
   }
 
 Meteor.publish('notes.list.all', function() {
-  return Notes.find({}, { fields: notesListFields})
+  return Note.find({}, { fields: notesListFields})
 })
 
 Meteor.publish('note.details', function(id) {
-  return Notes.find({_id: id }, { fields: noteFields})
+  return Note.find({_id: id }, { fields: noteFields})
 })

@@ -1,6 +1,6 @@
 import { createContainer } from 'meteor/react-meteor-data'
 import { FlowRouter } from 'meteor/kadira:flow-router'
-import { Notes } from '../../api/notes/notes'
+import { Note } from '../../api/notes/notes'
 import { Meteor } from 'meteor/meteor'
 
 import { AppLayout } from '../layouts/app_layout'
@@ -10,7 +10,7 @@ export default createContainer(
 		
 		const
 		  sub = Meteor.subscribe('notes.list.all'),
-			notes = sub.ready()? Notes.find({}, { sort: { updatedAt: -1 }}).fetch() : []
+			notes = sub.ready()? Note.find({}, { sort: { updatedAt: -1 }}).fetch() : []
 			,
 			redirectToNoteDetail = note => FlowRouter.go("noteDetail", {_id: note._id})
 			,

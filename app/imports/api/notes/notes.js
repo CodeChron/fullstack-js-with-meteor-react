@@ -2,9 +2,9 @@ import { Mongo } from 'meteor/mongo'
 import { Meteor } from 'meteor/meteor'
 import { Class } from 'meteor/jagi:astronomy'
 
-export const Notes = new Mongo.Collection('notes')
+const Notes = new Mongo.Collection('notes')
 
-const NoteSchema = Class.create({
+export const Note = Class.create({
 	name: 'Note',
 	collection: Notes,
 	fields: {
@@ -16,7 +16,7 @@ const NoteSchema = Class.create({
 Meteor.methods({
 
 	'/note/create': (title) => {
-		const note = new NoteSchema()
+		const note = new Note()
     note.set({
       title,
       updatedAt: new Date()
@@ -27,10 +27,9 @@ Meteor.methods({
 
   '/note/save': (note) => {
     
-    // note.set({
-    //   title,
-    //   updatedAt: new Date()
-    // })
+    note.set({
+      updatedAt: new Date()
+    })
     note.save()
     return note
   },
